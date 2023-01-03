@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hoinka</title>
+    <style>
+      #display {
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+        background-color: blue;
+      }
+      .cent {
+        text-align: center;
+      }
+      .green {
+        background-color: green;
+      }
+      .brown {
+        background-color: brown;
+      }
+      .star {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <label for="wys"
+        >podaj wysokosc hoinki: <input type="number" id="wys"
+      /></label>
+      <button id="polowa">polowa</button>
+      <button id="cala_bez_pnia">cala bez pnia</button>
+      <button id="cala_z_pniem">cala z pniem</button>
+    </main>
+    <p id="display"></p>
+    <script>
+      const wys = document.getElementById("wys");
+      const display = document.querySelector("#display");
+      const cala = document.querySelector("#cala_bez_pnia");
+      const cala_z_pniem = document.querySelector("#cala_z_pniem");
+      const polowa = document.querySelector("#polowa");
+      function fn1() {
+        display.innerHTML = "";
+        display.innerHTML = '<span class="star">☆</span>';
+        display.innerHTML += "<br>";
+
+        display.className = "cent";
+        const x = wys.value;
+        let s = -1;
+        for (let i = x; i > 0; i--) {
+          s = s + 2;
+
+          for (let z = s; z > 0; z--) {
+            display.innerHTML += '<span class="green">&nbsp</span>';
+          }
+          display.innerHTML += "<br>";
+        }
+      }
+      function fn2() {
+        display.className = "";
+        display.innerHTML = "";
+        display.innerHTML = '<span class="star">☆</span>';
+        display.innerHTML += "<br>";
+        const x = wys.value;
+        let s = 0;
+        for (let i = x; i > 0; i--) {
+          s = s + 1;
+          for (let z = s; z > 0; z--) {
+            display.innerHTML += '<span class="green">&nbsp</span>';
+          }
+          display.innerHTML += "<br>";
+        }
+      }
+      function fn3() {
+        display.innerHTML = "";
+        display.innerHTML = '<span class="star">☆</span>';
+        display.innerHTML += "<br>";
+        display.className = "cent";
+        const x = wys.value;
+        let s = -1;
+        for (let i = x; i > 0; i--) {
+          s = s + 2;
+
+          for (let z = s; z > 0; z--) {
+            display.innerHTML += '<span class="green">&nbsp</span>';
+          }
+          display.innerHTML += "<br>";
+        }
+        const l_gw = x * 2 - 1;
+        for (let n = (l_gw - 1) / 4; n > 0; n--) {
+          display.innerHTML += '<span class="brown"> ||</span>';
+          display.innerHTML += "<br>";
+        }
+      }
+      cala.addEventListener("click", fn1);
+      polowa.addEventListener("click", fn2);
+      cala_z_pniem.addEventListener("click", fn3);
+    </script>
+  </body>
+</html>
